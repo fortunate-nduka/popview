@@ -16,7 +16,7 @@ function Slider() {
 
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`;
-	const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
+	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
 	useEffect(() => {
 		const fetchMovies = async () => {
@@ -29,6 +29,7 @@ function Slider() {
 			}
 		};
 		fetchMovies();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
