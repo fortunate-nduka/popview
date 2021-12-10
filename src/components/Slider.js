@@ -42,6 +42,7 @@ function Slider() {
 			showThumbs={false}
 			transitionTime={10}
 			autoPlay={true}
+			swipeable={false}
 		>
 			{movies.map((movie) => (
 				<div
