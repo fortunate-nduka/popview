@@ -33,9 +33,9 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				const castList = cast.data;
 				const similarList = similar.data;
 				const movieList = movie.data;
-				console.log(similarList.results);
-				console.log(movieList);
-				setMovie(movieList)
+				// console.log(similarList.results);
+				// console.log(movieList);
+				setMovie(movieList);
 				setCasts(castList.cast);
 				setSimilars(similarList.results.slice(0, 3));
 			} catch (err) {
@@ -43,59 +43,60 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 			}
 		};
 		fetchCast();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
 		<div className='singleMovie '>
-			<div
-				className='carousel'
-				style={{
-					backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${
-						IMG_URL + movie.backdrop_path
-					})`,
-				}}
-			>
-				<header className='carousel-header'>
-					<div className='wrapper flex ai-c jc-sb'>
-					<Link to="/">
-						<div className='singleMovie-logo flex ai-c jc-c'><KeyboardBackspaceIcon/> Go back to homepage</div>
-					</Link>
-					</div>
-				</header>
-				<div className='wrapper singleMovie-wrapper flex ai-c jc-sb'>
-					<div className='carousel-content'>
-						<div className='carousel-title'> {movie.title} </div>
-						<div className='carousel-timeGenre flex ai-c'>
-							<span className='flex ai-c jc-c'>
-								<StarIcon style={{ color: '#d7ab25' }} />
-								{movie.vote_average}
-							</span>
-							<span className='divider'>|</span>
-							{movie.release_date.slice(0, 4)}
-							<span className='divider'>|</span>
-							<span className='flex ai-c jc-c'>
-								<FavoriteIcon style={{ color: '#d11d1d' }} />
-								{movie.vote_count}
-							</span>
+				<div
+					className='carousel'
+					style={{
+						backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${IMG_URL + movie.backdrop_path
+							})`,
+					}}
+				>
+					<header className='carousel-header'>
+						<div className='wrapper flex ai-c jc-sb'>
+							<Link to='/'>
+								<div className='singleMovie-logo flex ai-c jc-c'>
+									<KeyboardBackspaceIcon /> Go back to homepage
+								</div>
+							</Link>
 						</div>
-						<div className='carousel-overview'> {movie.overview} </div>
-						<div className='carousel-button flex ai-c'>
-							<button className='red'>
-								<PlaylistAddIcon />
-								Add List
-							</button>
+					</header>
+					<div className='wrapper singleMovie-wrapper flex ai-c jc-sb'>
+						<div className='carousel-content'>
+							<div className='carousel-title'> {movie.title} </div>
+							<div className='carousel-timeGenre flex ai-c'>
+								<span className='flex ai-c jc-c'>
+									<StarIcon style={{ color: '#d7ab25' }} />
+									{movie.vote_average}
+								</span>
+								<span className='divider'>|</span>
+								{movie.release_date}
+								<span className='divider'>|</span>
+								<span className='flex ai-c jc-c'>
+									<FavoriteIcon style={{ color: '#d11d1d' }} />
+									{movie.vote_count}
+								</span>
+							</div>
+							<div className='carousel-overview'> {movie.overview} </div>
+							<div className='carousel-button flex ai-c'>
+								<button className='red'>
+									<PlaylistAddIcon />
+									Add List
+								</button>
+							</div>
 						</div>
+						<figure className='carousel-figure singleMovie-figure'>
+							<img
+								className='carousel-poster'
+								src={IMG_URL + movie.poster_path}
+								alt=''
+							/>
+						</figure>
 					</div>
-					<figure className='carousel-figure singleMovie-figure'>
-						<img
-							className='carousel-poster'
-							src={IMG_URL + movie.poster_path}
-							alt=''
-						/>
-					</figure>
 				</div>
-			</div>
 			<div className='wrapper'>
 				<div className='singleMovie__cast flex ai-c jc-c wrap'>
 					{casts.map((cast) => (
@@ -135,7 +136,8 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 								<div className='movies-title'>{similar.title}</div>
 								<div className='movies-info flex ai-c jc-sb'>
 									<span>
-										{similar.release_date && similar.release_date.slice(0, 4)}
+										{similar.release_date &&
+											similar.release_date.slice(0, 4)}
 									</span>
 									<div className='movies-info-icons flex ai-c jc-c'>
 										<span>
