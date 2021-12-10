@@ -1,0 +1,106 @@
+/*! GLOBAL STYLES */
+:root {
+  --maxWidth: 1400px;
+  --black: #000000;
+  --white: #ffffff;
+  --grey: #999797;
+  --red: #d11d1d;
+  --fontHeading: 'Aladin',
+    cursive;
+  --fontBody: 'poppins', sans serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media screen and (max-width: 1000px) {
+    font-size: 60.5%;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 58.5%;
+  }
+}
+
+#root {
+  width: 100%;
+}
+
+body {
+  background-color: var(--black);
+  font-family: var(--fontBody);
+  font-size: 1.5rem;
+  color: var(--white);
+  line-height: 1.5;
+  letter-spacing: 1px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+}
+
+button {
+  padding: 1.5rem 4rem;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  font-family: var(--fontBody);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button.red {
+  background-color: var(--red);
+  border: 1px solid var(--red);
+}
+
+button.black {
+  background-color: var(--black);
+  border: 1px solid var(--grey);
+}
+
+button svg {
+  font-size: 5rem;
+}
+
+
+/*! HELPER CLASSES */
+.flex {
+  display: flex;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.fd-c {
+  flex-direction: column;
+}
+
+.ai-c {
+  align-items: center;
+}
+
+.jc-c {
+  justify-content: center;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
