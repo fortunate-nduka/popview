@@ -24,7 +24,6 @@ function SingleMovie() {
 	const SIMILAR_URL = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 	const MOVIE_URL = `
 https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
-
 	useEffect(() => {
 		const fetchCast = async () => {
 			try {
@@ -34,7 +33,6 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				const castList = cast.data;
 				const similarList = similar.data;
 				const movieList = movie.data;
-				// console.log(similarList.results);
 				console.log(castList);
 				setMovie(movieList);
 				setCasts(castList.cast.slice(0, 4));
@@ -132,7 +130,9 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 						</>
 					))}
 				</div>
-				<div className="see-all">see all casts</div>
+				<Link to={`/cast/${id}`}>
+				<div className="see-all">see all cast</div>
+				</Link>
 				<div className="section-title">crews</div>
 				<div className='singleMovie__cast flex ai-s jc-c wrap'>
 					{crews.map((crew) => (
@@ -160,7 +160,9 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 						</>
 					))}
 				</div>
-				<div className="see-all">see all casts</div>
+				<Link to={`/crew/${id}`}>
+					<div className="see-all">see all crew</div>
+				</Link>
 				<div className="section-title">similar movies</div>
 				<div className='singleMovie__similar flex ai-c jc-c wrap'>
 					{similars.map((similar) => (
@@ -181,7 +183,8 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 										<div className='movies-info-icons flex ai-c jc-c'>
 											<span>
 												<StarIcon style={{ color: '#d7ab25' }} />
-												{similar.vote_average && (similar.vote_average)}
+												{similar.vote_average &&
+													(similar.vote_average)}
 											</span>
 										</div>
 									</div>

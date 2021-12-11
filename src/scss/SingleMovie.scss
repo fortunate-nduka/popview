@@ -62,7 +62,7 @@
     &-card {
       width: 20rem;
 
-      @media screen and (max-width: 450px) {
+      @media screen and (max-width: 500px) {
         width: 80%;
       }
 
@@ -74,7 +74,7 @@
   }
 
   &__similar {
-    gap: 5rem 4rem;
+    gap: 5rem;
     margin: 0 auto;
 
     &-card {
