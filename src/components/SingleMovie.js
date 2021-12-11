@@ -48,7 +48,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [SIMILAR_URL]);
 
-	const handleSimilar = ()=>{
+	const handleSimilar = () => {
 		window.scrollTo(0, 0);
 	}
 
@@ -181,7 +181,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 										<div className='movies-info-icons flex ai-c jc-c'>
 											<span>
 												<StarIcon style={{ color: '#d7ab25' }} />
-												{similar.vote_average}
+												{similar.vote_average && (similar.vote_average)}
 											</span>
 										</div>
 									</div>
