@@ -14,6 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 function SingleMovie() {
 	const [casts, setCasts] = useState([]);
+	const [crews, setCrews] = useState([]);
 	const [similars, setSimilars] = useState([]);
 	const [movie, setMovie] = useState([]);
 	const { id } = useParams();
@@ -34,9 +35,10 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				const similarList = similar.data;
 				const movieList = movie.data;
 				// console.log(similarList.results);
-				// console.log(movieList);
+				console.log(castList);
 				setMovie(movieList);
-				setCasts(castList.cast);
+				setCasts(castList.cast.slice(0, 6));
+				setCrews(castList.crew.slice(0, 8));
 				setSimilars(similarList.results.slice(0, 3));
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
@@ -99,7 +101,8 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 					</div>
 				</div>
 			<div className='wrapper'>
-				<div className='singleMovie__cast flex ai-c jc-c wrap'>
+			<div className="section-title">casts</div>
+				<div className='singleMovie__cast flex ai-s jc-c wrap'>
 					{casts.map((cast) => (
 						<>
 							{cast.profile_path && (
@@ -125,6 +128,36 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 						</>
 					))}
 				</div>
+				<div className="see-all">see all casts</div>
+				<div className="section-title">crews</div>
+				<div className='singleMovie__cast flex ai-s jc-c wrap'>
+					{crews.map((crew) => (
+						<>
+							{crew.profile_path && (
+								<div key={crew.id} className='singleMovie__cast-card'>
+									{crew.profile_path ? (
+										<img src={IMG_URL + crew.profile_path} alt='' />
+									) : (
+										<img src={NO_IMAGE} alt='' />
+									)}
+									<div className='singleMovie__cast-name'>
+										<span>Name: </span>
+										{crew.name}
+									</div>
+									<div className='singleMovie__cast-gender'>
+										<span>Department: </span>
+										{crew.department}
+									</div>
+									<div className='singleMovie__cast-character'>
+										<span>Job: </span> {crew.job}
+									</div>
+								</div>
+							)}
+						</>
+					))}
+				</div>
+				<div className="see-all">see all casts</div>
+				<div className="section-title">similar movies</div>
 				<div className='singleMovie__similar flex ai-c jc-c wrap'>
 					{similars.map((similar) => (
 						<div key={similar.id} className='singleMovie__similar-card'>

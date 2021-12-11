@@ -1,4 +1,5 @@
 .singleMovie {
+  padding-bottom: 6rem;
   &-wrapper {
     padding: 7rem 5rem !important;
 
@@ -8,8 +9,12 @@
     }
 
     @media screen and (max-width: 600px) {
-      padding: 6rem 2rem !important;
+      padding: 6rem 1rem !important;
     }
+  }
+
+  & .wrapper{
+    padding: 0 5rem;
   }
 
   &-figure {
@@ -37,7 +42,6 @@
   }
 
   &__cast {
-    margin-top: 5rem;
     gap: 5rem 4rem;
 
     &-name,
@@ -80,7 +84,7 @@
       }
 
       @media screen and (max-width: 600px) {
-        width: 90%;
+        width: 96%;
       }
 
       img {

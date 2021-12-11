@@ -52,6 +52,22 @@ a {
   margin: 0 auto;
 }
 
+
+.section-title {
+  padding-left: 2rem;
+  margin: 10rem 0 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.see-all {
+  font-size: 2rem;
+  padding-left: 2rem;
+  margin: 4rem 0;
+  text-decoration: underline;
+}
+
 button {
   padding: 1.5rem 4rem;
   border: none;
@@ -98,6 +114,10 @@ button svg {
 
 .ai-c {
   align-items: center;
+}
+
+.ai-s {
+  align-items: flex-start;
 }
 
 .jc-c {
