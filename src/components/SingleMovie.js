@@ -50,6 +50,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 		<div className='singleMovie '>
 				<div
 					className='carousel'
+					key={movie.id}
 					style={{
 						backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${IMG_URL + movie.backdrop_path
 							})`,
@@ -102,7 +103,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 					{casts.map((cast) => (
 						<>
 							{cast.profile_path && (
-								<div className='singleMovie__cast-card'>
+								<div key={cast.id} className='singleMovie__cast-card'>
 									{cast.profile_path ? (
 										<img src={IMG_URL + cast.profile_path} alt='' />
 									) : (
@@ -126,7 +127,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				</div>
 				<div className='singleMovie__similar flex ai-c jc-c wrap'>
 					{similars.map((similar) => (
-						<div className='singleMovie__similar-card'>
+						<div key={similar.id} className='singleMovie__similar-card'>
 							{similar.backdrop_path ? (
 								<img src={IMG_URL + similar.backdrop_path} alt='' />
 							) : (

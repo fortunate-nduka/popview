@@ -70,6 +70,9 @@
     box-shadow: -8px 2px 38px -2px rgba(0, 0, 0, 0.71);
 
     @media screen and (max-width: 450px) {
+      flex-basis: 30rem;
+    }
+    @media screen and (max-width: 310px) {
       flex-basis: 25rem;
     }
 
@@ -84,8 +87,8 @@
   }
 
   &-title {
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
     margin: .4rem 0 .7rem;
   }
 

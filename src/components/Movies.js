@@ -16,7 +16,7 @@ function Movies() {
 
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
-	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`;
+	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
 	const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY}&query=`;
 
 	useEffect(() => {
@@ -44,7 +44,7 @@ function Movies() {
 			};
 			fetchMovies();
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [page, searchTerm]);
 
 	return (

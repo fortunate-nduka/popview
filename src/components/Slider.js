@@ -1,7 +1,6 @@
 import { Carousel } from 'react-responsive-carousel';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import DataContext from '../contexts/DataContext';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../scss/Slider.scss';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
@@ -12,10 +11,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 function Slider() {
 	const [movies, setMovies] = useState([]);
-	const { page } = useContext(DataContext);
+	const rand = Math.floor(Math.random() * 5) + 1;
 
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
-	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${page}`;
+	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 
 	useEffect(() => {
@@ -24,12 +23,13 @@ function Slider() {
 				const response = await axios(API_URL);
 				const listMovies = response.data;
 				setMovies(listMovies.results);
+				console.log(rand);
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
 			}
 		};
 		fetchMovies();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -48,9 +48,8 @@ function Slider() {
 				<div
 					key={movie.id}
 					style={{
-						backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${
-							IMG_URL + movie.backdrop_path
-						})`,
+						backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${IMG_URL + movie.backdrop_path
+							})`,
 					}}
 					className='carousel'
 				>
