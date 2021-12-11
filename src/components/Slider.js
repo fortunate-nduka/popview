@@ -58,7 +58,7 @@ function Slider() {
 					<header className='carousel-header'>
 						<div className='wrapper flex ai-c jc-sb'>
 						<Link to="/">
-							<div className='carousel-logo'>POP VIEW</div>
+							<div className='carousel-logo'>POPVIEW</div>
 						</Link>
 							<div className='carousel-header-nav flex ai-c jc-c'>
 								<span>
