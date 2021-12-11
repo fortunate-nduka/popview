@@ -75,9 +75,7 @@ function Movies() {
 							</NavLink>
 							<div className='movies-details'>
 								<div className='movies-title'>
-									{movie.title.length <= 20
-										? movie.title
-										: `${movie.title.slice(0, 20)}...`}
+									{movie.title}
 								</div>
 								<div className='movies-info flex ai-c jc-sb'>
 									<span>
