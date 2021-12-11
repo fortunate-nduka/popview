@@ -37,9 +37,9 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				// console.log(similarList.results);
 				console.log(castList);
 				setMovie(movieList);
-				setCasts(castList.cast.slice(0, 5));
-				setCrews(castList.crew.slice(0, 7));
-				setSimilars(similarList.results.slice(0, 3));
+				setCasts(castList.cast.slice(0, 4));
+				setCrews(castList.crew.slice(0, 5));
+				setSimilars(similarList.results.slice(0, 4));
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
 			}
@@ -166,8 +166,8 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 					{similars.map((similar) => (
 						<Link to={`/movie/${similar.id}`}>
 							<div onClick={handleSimilar} key={similar.id} className='singleMovie__similar-card'>
-								{similar.backdrop_path ? (
-									<img src={IMG_URL + similar.backdrop_path} alt='' />
+								{similar.poster_path ? (
+									<img src={IMG_URL + similar.poster_path} alt='' />
 								) : (
 									<img src={NO_IMAGE} alt='' />
 								)}
