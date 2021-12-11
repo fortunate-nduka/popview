@@ -47,6 +47,16 @@ function Movies() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [page, searchTerm]);
 
+	const handleNext = (prevState) => {
+		setPage((prevState) => prevState + 1)
+		window.scrollTo(0, 0);
+	}
+	const handlePrev= (prevState) => {
+		setPage((prevState) => prevState - 1)
+		window.scrollTo(0, 0);
+	}
+
+
 	return (
 		<div className='movies'>
 			<div className='movies-header'>
@@ -104,14 +114,14 @@ function Movies() {
 							<button className='red'>Prev</button>
 						) : (
 							<button
-								onClick={() => setPage((prevState) => prevState - 1)}
+								onClick={handlePrev}
 								className='red'
 							>
 								Prev
 							</button>
 						)}
 						<button
-							onClick={() => setPage((prevState) => prevState + 1)}
+							onClick={handleNext}
 							className='black'
 						>
 							Next

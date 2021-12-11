@@ -1,6 +1,7 @@
 import { Carousel } from 'react-responsive-carousel';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../scss/Slider.scss';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
@@ -45,6 +46,7 @@ function Slider() {
 			swipeable={false}
 		>
 			{movies.map((movie) => (
+				<Link to={`/movie/${movie.id}`}>
 				<div
 					key={movie.id}
 					style={{
@@ -55,7 +57,9 @@ function Slider() {
 				>
 					<header className='carousel-header'>
 						<div className='wrapper flex ai-c jc-sb'>
+						<Link to="/">
 							<div className='carousel-logo'>POP VIEW</div>
+						</Link>
 							<div className='carousel-header-nav flex ai-c jc-c'>
 								<span>
 									<PlaylistPlayIcon style={{ fontSize: '3.2rem' }} />
@@ -99,6 +103,7 @@ function Slider() {
 						</figure>
 					</div>
 				</div>
+				</Link>
 			))}
 		</Carousel>
 	);
