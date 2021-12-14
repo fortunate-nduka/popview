@@ -4,6 +4,8 @@ import axios from "axios";
 import '../scss/SingleMovie.scss';
 import NO_IMAGE from '../images/no_image.jpg';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 function Crews() {
   const [crews, setCrews] = useState([])
@@ -29,6 +31,21 @@ function Crews() {
 
   return (
     <>
+      <header className='carousel-header'>
+        <div className='wrapper flex ai-c jc-sb'>
+          <Link to="/">
+            <div className='carousel-logo'>POPVIEW</div>
+          </Link>
+          <div className='carousel-header-nav flex ai-c jc-c'>
+            <span>
+              <PlaylistPlayIcon style={{ fontSize: '3.2rem' }} />
+            </span>
+            <span>
+              <NotificationsIcon />
+            </span>
+          </div>
+        </div>
+      </header>
       <header className='carousel-header'>
         <div className='wrapper flex ai-c jc-sb'>
           <Link to={`/movie/${id}`}>

@@ -8,6 +8,8 @@ import '../scss/Content.scss';
 import StarIcon from '@material-ui/icons/Star';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 function SingleMovie() {
 	const [casts, setCasts] = useState([]);
@@ -58,9 +60,24 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 			>
 				<header className='carousel-header'>
 					<div className='wrapper flex ai-c jc-sb'>
+						<Link to="/">
+							<div className='carousel-logo'>POPVIEW</div>
+						</Link>
+						<div className='carousel-header-nav flex ai-c jc-c'>
+							<span>
+								<PlaylistPlayIcon style={{ fontSize: '3.2rem' }} />
+							</span>
+							<span>
+								<NotificationsIcon />
+							</span>
+						</div>
+					</div>
+				</header>
+				<header style={{ height: '5rem' }} className='carousel-header'>
+					<div className='wrapper flex ai-c jc-sb'>
 						<Link to='/'>
 							<div className='singleMovie-logo flex ai-c jc-c'>
-								<KeyboardBackspaceIcon /> Go back to homepage
+								<KeyboardBackspaceIcon /> Go back
 							</div>
 						</Link>
 					</div>
