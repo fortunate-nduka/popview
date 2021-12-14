@@ -27,11 +27,9 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				const people = await axios(PEOPLE_URL);
 				const similar = await axios(SIMILAR_URL);
 				const movie = await axios(MOVIE_URL);
-				console.log(movie)
 				const peopleList = people.data;
 				const similarList = similar.data;
 				const movieList = movie.data;
-				console.log(movieList);
 				setMovie(movieList);
 				setCasts(peopleList.cast.slice(0, 4));
 				setCrews(peopleList.crew.slice(0, 4));
@@ -69,11 +67,6 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				</header>
 				<div className='wrapper singleMovie-wrapper flex ai-c jc-sb'>
 					<div className='carousel-content'>
-						{movie.genres &&
-							<div className="carousel-genres flex ai-c wrap">
-								{movie.genres.map(genre => <div className="carousel-genre">{genre.name}</div>)}
-							</div>
-						}
 						<div className='carousel-title'> {movie.title} </div>
 						<div className='carousel-tagline'> {movie.tagline} </div>
 						<div className='carousel-timeGenre flex ai-c'>
@@ -89,6 +82,11 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 								{movie.vote_count}
 							</span>
 						</div>
+						{movie.genres &&
+							<div className="carousel-genres flex ai-c wrap">
+								{movie.genres.map(genre => <div className="carousel-genre">{genre.name}</div>)}
+							</div>
+						}
 						<div className='carousel-overview'> {movie.overview} </div>
 					</div>
 					<figure className='carousel-figure singleMovie-figure'>
