@@ -17,6 +17,15 @@
     padding: 0 5rem;
   }
 
+  &-watch {
+    justify-content: flex-start;
+    text-transform: uppercase;
+
+    & svg {
+      width: 3rem !important;
+    }
+  }
+
   &-figure {
     width: 27rem;
 
@@ -80,13 +89,9 @@
     &-card {
       width: 25rem;
 
-      @media screen and (max-width: 600px) {
-        width: 30rem;
-      }
-
-      @media screen and (max-width: 310px) {
-        width: 25rem;
-      }
+     @media screen and (max-width: 500px) {
+       width: 80%;
+     }
 
       img {
         width: 100%;

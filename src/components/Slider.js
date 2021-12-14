@@ -87,12 +87,6 @@ function Slider() {
 								</span>
 							</div>
 							<div className='carousel-overview'> {movie.overview} </div>
-							<div className='carousel-button flex ai-c'>
-								<button className='red'>
-									<PlaylistAddIcon />
-									Add List
-								</button>
-							</div>
 						</div>
 						<figure className='carousel-figure'>
 							<img

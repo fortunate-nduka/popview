@@ -1,6 +1,6 @@
 .movies {
   width: 100%;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
    @media screen and (max-width: 500px) {
      padding: 4rem 1rem;
    }
@@ -18,7 +18,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
 
     &-icon {
       margin-right: -3.5rem;
