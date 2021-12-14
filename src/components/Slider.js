@@ -1,5 +1,5 @@
 import { Carousel } from 'react-responsive-carousel';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -16,7 +16,7 @@ function Slider() {
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
-	const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
+	// const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
 
 	useEffect(() => {
 		const fetchMovies = async () => {
