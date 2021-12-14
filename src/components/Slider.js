@@ -14,7 +14,7 @@ function Slider() {
 	const rand = Math.floor(Math.random() * 5) + 1;
 
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
-	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}&append_to_response=videos`;
+	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 	// const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
 
@@ -50,7 +50,7 @@ function Slider() {
 					<div
 						key={movie.id}
 						style={{
-							backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${IMG_URL + movie.backdrop_path
+							backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(${IMG_URL + movie.backdrop_path
 								})`,
 						}}
 						className='carousel'

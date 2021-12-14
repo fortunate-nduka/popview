@@ -9,12 +9,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import NO_IMAGE from '../images/no_image.jpg';
 
 function Movies() {
-	const { movies, page, setMovies, setPage, searchTerm, setSearchTerm } =
+	const { movies, setMovies, page, setPage, searchTerm, setSearchTerm } =
 		useContext(DataContext);
 
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
-	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`;
+	const MOVIES_URL = `
+https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&sort_by=popularity.desc`;
 	const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?&api_key=${API_KEY}&query=`;
 
 	useEffect(() => {
@@ -32,7 +33,7 @@ function Movies() {
 		} else {
 			const fetchMovies = async () => {
 				try {
-					const response = await axios(API_URL);
+					const response = await axios(MOVIES_URL);
 					const listMovies = response.data;
 					setPage(listMovies.page);
 					setMovies(listMovies.results);
@@ -49,7 +50,7 @@ function Movies() {
 		setPage((prevState) => prevState + 1)
 		window.scrollTo(0, 0);
 	}
-	const handlePrev= (prevState) => {
+	const handlePrev = (prevState) => {
 		setPage((prevState) => prevState - 1)
 		window.scrollTo(0, 0);
 	}

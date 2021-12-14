@@ -4,8 +4,7 @@ import axios from "axios";
 import '../scss/SingleMovie.scss';
 import '../scss/Slider.scss';
 import NO_IMAGE from '../images/no_image.jpg';
-import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import  KeyboardBackspaceIcon  from "@material-ui/icons/KeyboardBackspace";
 
 function Casts() {
   const [casts, setCasts] = useState([])
@@ -33,17 +32,9 @@ function Casts() {
     <>
       <header className='carousel-header'>
         <div className='wrapper flex ai-c jc-sb'>
-          <Link to="/">
-            <div className='carousel-logo'>POPVIEW</div>
+          <Link to={`/movie/${id}`}>
+            <div className="flex ai-c jc-c"><KeyboardBackspaceIcon style={{marginRight: '.9rem', fontSize: '2rem'}}/> Go Back</div>
           </Link>
-          <div className='carousel-header-nav flex ai-c jc-c'>
-            <span>
-              <PlaylistPlayIcon style={{ fontSize: '3.2rem' }} />
-            </span>
-            <span>
-              <NotificationsIcon />
-            </span>
-          </div>
         </div>
       </header>
       <div className='wrapper' style={{ padding: '4rem 0' }}>
