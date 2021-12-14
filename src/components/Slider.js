@@ -24,7 +24,6 @@ function Slider() {
 				const response = await axios(API_URL);
 				const listMovies = response.data;
 				setMovies(listMovies.results);
-				console.log(listMovies);
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
 			}
@@ -55,6 +54,8 @@ function Slider() {
 						}}
 						className='carousel'
 					>
+						<img className="carousel-bg" style={{ display: 'none' }} src={`${IMG_URL + movie.backdrop_path
+							}`} alt="" />
 						<header className='carousel-header'>
 							<div className='wrapper flex ai-c jc-sb'>
 								<Link to="/">
