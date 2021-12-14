@@ -25,9 +25,11 @@ html {
   @media screen and (max-width: 1000px) {
     font-size: 60.5%;
   }
+
   @media screen and (max-width: 800px) {
     font-size: 58.5%;
   }
+
   @media screen and (max-width: 600px) {
     font-size: 55.5%;
   }
@@ -74,33 +76,47 @@ a:hover {
   text-transform: uppercase;
   font-weight: 900;
   font-size: 2.3rem;
+
+  width: fit-content;
+
+  &::after {
+    display: block;
+    content: '';
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    margin-top: 1px;
+  }
 }
 
 .see-all {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   margin: 6rem 0;
-  text-decoration: underline;
+  // text-decoration: underline;
 }
-.section-title,.see-all{
-  padding-left: 5rem;
+
+.section-title,
+.see-all {
+  margin-left: 5rem;
 
   @media screen and (max-width: 1000px) {
-    padding-left: 3rem;
+    margin-left: 3rem;
   }
 
   @media screen and (max-width: 600px) {
-    padding-left: 1rem;
+    margin-left: 1rem;
   }
 }
+
 button {
-  padding: 1.5rem 4rem;
+  padding: 1.2rem 2rem;
   border: none;
   border-radius: 30px;
   outline: none;
+  // font-size: 1.4rem;
   font-family: var(--fontBody);
-  font-weight: 700;
   color: var(--white);
-  text-transform: uppercase;
+  // text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,7 +138,7 @@ button svg {
   font-size: 5rem;
 }
 
-.netflix-img{
+.netflix-img {
   width: 5%;
 }
 

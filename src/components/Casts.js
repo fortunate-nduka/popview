@@ -4,7 +4,6 @@ import axios from "axios";
 import '../scss/SingleMovie.scss';
 import '../scss/Slider.scss';
 import NO_IMAGE from '../images/no_image.jpg';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 
@@ -45,15 +44,6 @@ function Casts() {
               <NotificationsIcon />
             </span>
           </div>
-        </div>
-      </header>
-      <header style={{ height: '5rem' }} className='carousel-header'>
-        <div className='wrapper flex ai-c jc-sb'>
-          <Link to={`/movie/${id}`}>
-            <div className='singleMovie-logo flex ai-c jc-c'>
-              <KeyboardBackspaceIcon /> Go back
-            </div>
-          </Link>
         </div>
       </header>
       <div className='wrapper' style={{ padding: '4rem 0' }}>

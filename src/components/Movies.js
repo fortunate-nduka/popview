@@ -5,8 +5,6 @@ import { useContext } from 'react';
 import DataContext from '../contexts/DataContext';
 import '../scss/Content.scss';
 import StarIcon from '@material-ui/icons/Star';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import SearchIcon from '@material-ui/icons/Search';
 import NO_IMAGE from '../images/no_image.jpg';
 
@@ -92,12 +90,6 @@ function Movies() {
 										{movie.release_date && movie.release_date.slice(0, 4)}
 									</span>
 									<div className='movies-info-icons flex ai-c jc-c'>
-										<span>
-											<VisibilityIcon style={{ color: '#d11d1d' }} />
-										</span>
-										<span>
-											<FavoriteIcon style={{ color: '#d11d1d' }} />
-										</span>
 										<span>
 											<StarIcon style={{ color: '#d7ab25' }} />
 											{movie.vote_average}

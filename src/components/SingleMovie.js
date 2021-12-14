@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import '../scss/SingleMovie.scss';
@@ -6,16 +6,16 @@ import NO_IMAGE from '../images/no_image.jpg';
 import '../scss/Slider.scss';
 import '../scss/Content.scss';
 import StarIcon from '@material-ui/icons/Star';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import DataContext from '../contexts/DataContext';
 
 function SingleMovie() {
+	const { singleMovie, setSingleMovie } = useContext(DataContext)
 	const [casts, setCasts] = useState([]);
 	const [crews, setCrews] = useState([]);
 	const [similars, setSimilars] = useState([]);
-	const [movie, setMovie] = useState([]);
 	const { id } = useParams();
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const PEOPLE_URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
@@ -23,16 +23,20 @@ function SingleMovie() {
 	const SIMILAR_URL = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 	const MOVIE_URL = `
 https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
+	// const TRAILER_URL = `https://api.themoviedb.org/3/movie/157336?api_key=2e1b1833046bb0966cc107c440e51fe6&append_to_response=videos`
+
 	useEffect(() => {
 		const fetchCast = async () => {
 			try {
 				const people = await axios(PEOPLE_URL);
 				const similar = await axios(SIMILAR_URL);
 				const movie = await axios(MOVIE_URL);
+				// const trailer = await axios(TRAILER_URL);
 				const peopleList = people.data;
 				const similarList = similar.data;
 				const movieList = movie.data;
-				setMovie(movieList);
+				console.log(movieList);
+				setSingleMovie(movieList);
 				setCasts(peopleList.cast.slice(0, 4));
 				setCrews(peopleList.crew.slice(0, 4));
 				setSimilars(similarList.results.slice(0, 4));
@@ -52,9 +56,9 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 		<div className='singleMovie '>
 			<div
 				className='carousel'
-				key={movie.id}
+				key={singleMovie.id}
 				style={{
-					backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${IMG_URL + movie.backdrop_path
+					backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(${IMG_URL + singleMovie.backdrop_path
 						})`,
 				}}
 			>
@@ -73,43 +77,34 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 						</div>
 					</div>
 				</header>
-				<header style={{ height: '5rem' }} className='carousel-header'>
-					<div className='wrapper flex ai-c jc-sb'>
-						<Link to='/'>
-							<div className='singleMovie-logo flex ai-c jc-c'>
-								<KeyboardBackspaceIcon /> Go back
-							</div>
-						</Link>
-					</div>
-				</header>
 				<div className='wrapper singleMovie-wrapper flex ai-c jc-sb'>
 					<div className='carousel-content'>
-						<div className='carousel-title'> {movie.title} </div>
-						<div className='carousel-tagline'> {movie.tagline} </div>
-						{movie.genres &&
+						<div className='carousel-title'> {singleMovie.title} </div>
+						<div className='carousel-tagline'> {singleMovie.tagline} </div>
+						{singleMovie.genres &&
 							<div className="carousel-genres flex ai-c wrap">
-								{movie.genres.map(genre => <div className="carousel-genre">{genre.name}</div>)}
+								{singleMovie.genres.map(genre => <div className="carousel-genre">{genre.name}</div>)}
 							</div>
 						}
 						<div className='carousel-timeGenre flex ai-c'>
 							<span className='flex ai-c jc-c'>
 								<StarIcon style={{ color: '#d7ab25' }} />
-								{movie.vote_average}
+								{singleMovie.vote_average}
 							</span>
 							<span className='divider'>|</span>
-							{movie.release_date}
+							{singleMovie.release_date}
 							<span className='divider'>|</span>
 							<span className='flex ai-c jc-c'>
 								<FavoriteIcon style={{ color: '#d11d1d' }} />
-								{movie.vote_count}
+								{singleMovie.vote_count}
 							</span>
 						</div>
-						<div className='carousel-overview'> {movie.overview} </div>
+						<div className='carousel-overview'> {singleMovie.overview} </div>
 					</div>
 					<figure className='carousel-figure singleMovie-figure'>
 						<img
 							className='carousel-poster'
-							src={IMG_URL + movie.poster_path}
+							src={IMG_URL + singleMovie.poster_path}
 							alt=''
 						/>
 					</figure>
@@ -144,7 +139,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 					))}
 				</div>
 				{casts && <Link to={`/cast/${id}`}>
-					<div className="see-all">see all cast</div>
+					<button className="red see-all">See all cast</button>
 				</Link>}
 				<div className="section-title">crews</div>
 				<div className='singleMovie__cast flex ai-s jc-c wrap'>
@@ -174,7 +169,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 					))}
 				</div>
 				{crews && <Link to={`/crew/${id}`}>
-					<div className="see-all">see all crew</div>
+					<button className="red see-all">See all crew</button>
 				</Link>}
 				<div className="section-title">similar movies</div>
 				<div className='singleMovie__similar flex ai-c jc-c wrap'>
