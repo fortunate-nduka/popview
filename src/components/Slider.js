@@ -6,7 +6,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../scss/Slider.scss';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+// import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import StarIcon from '@material-ui/icons/Star';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 

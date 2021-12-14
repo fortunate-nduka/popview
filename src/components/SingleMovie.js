@@ -11,7 +11,7 @@ import StarIcon from '@material-ui/icons/Star';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 // import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import NETFLIX_IMG from '../images/netflix-logo.png'
+// import NETFLIX_IMG from '../images/netflix-logo.png'
 
 function SingleMovie() {
 	const [casts, setCasts] = useState([]);
