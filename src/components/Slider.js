@@ -1,12 +1,11 @@
 import { Carousel } from 'react-responsive-carousel';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../scss/Slider.scss';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-// import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import StarIcon from '@material-ui/icons/Star';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
@@ -17,6 +16,7 @@ function Slider() {
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
+	const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
 
 	useEffect(() => {
 		const fetchMovies = async () => {
@@ -24,7 +24,7 @@ function Slider() {
 				const response = await axios(API_URL);
 				const listMovies = response.data;
 				setMovies(listMovies.results);
-				console.log(rand);
+				console.log(listMovies);
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
 			}
@@ -87,6 +87,7 @@ function Slider() {
 								</span>
 							</div>
 							<div className='carousel-overview'> {movie.overview} </div>
+							<div className="carousel-starring"></div>
 						</div>
 						<figure className='carousel-figure'>
 							<img

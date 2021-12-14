@@ -6,12 +6,8 @@ import NO_IMAGE from '../images/no_image.jpg';
 import '../scss/Slider.scss';
 import '../scss/Content.scss';
 import StarIcon from '@material-ui/icons/Star';
-// import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
-// import NotificationsIcon from '@material-ui/icons/Notifications';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-// import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-// import NETFLIX_IMG from '../images/netflix-logo.png'
 
 function SingleMovie() {
 	const [casts, setCasts] = useState([]);
@@ -35,6 +31,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				const peopleList = people.data;
 				const similarList = similar.data;
 				const movieList = movie.data;
+				console.log(movieList);
 				setMovie(movieList);
 				setCasts(peopleList.cast.slice(0, 4));
 				setCrews(peopleList.crew.slice(0, 4));

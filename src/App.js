@@ -1,4 +1,3 @@
-// import Content from './components/Content';
 import { DataProvider } from './contexts/DataContext';
 import { Routes, Route } from 'react-router-dom';
 import SingleMovie from './components/SingleMovie';
