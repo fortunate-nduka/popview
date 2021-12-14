@@ -73,6 +73,11 @@ function Slider() {
 					<div className='wrapper flex ai-c jc-sb'>
 						<div className='carousel-content'>
 							<div className='carousel-title'> {movie.title} </div>
+								{movie.genres &&
+									<div className="carousel-genres flex ai-c wrap">
+										{movie.genres.map(genre => <div className="carousel-genre">{genre.name}</div>)}
+									</div>
+								}
 							<div className='carousel-timeGenre flex ai-c'>
 								<span className='flex ai-c jc-c'>
 									<StarIcon style={{ color: '#d7ab25' }} />
