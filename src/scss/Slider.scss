@@ -136,6 +136,9 @@
   &-genres {
     gap: 2rem;
     margin-bottom: 3rem;
+    @media screen and (max-width: 600px) {
+      gap: 1rem;
+    }
   }
 
   &-genre {
@@ -144,6 +147,10 @@
     font-size: 1.3rem;
     padding: 1rem 1.5rem;
     border-radius: 20px;
+    @media screen and (max-width: 600px) {
+      font-size: 1.2rem;
+      padding: .8rem 1.3rem;
+    }
   }
 
   &-timeGenre {
