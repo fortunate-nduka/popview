@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import DataContext from '../contexts/DataContext';
 import '../scss/Content.scss';
@@ -47,7 +47,7 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 			fetchMovies();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [page, searchTerm]);
+	}, [page, searchTerm,Link]);
 
 	const handleNext = (prevState) => {
 		setPage((prevState) => prevState + 1)
@@ -79,13 +79,13 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 				<div className='movies-container flex wrap'>
 					{movies.map((movie) => (
 						<div key={movie.id} className='movies-card'>
-							<NavLink to={`/movie/${movie.id}`}>
+							<Link to={`/movie/${movie.id}`}>
 								{movie.poster_path ? (
 									<img src={IMG_URL + movie.poster_path} alt='' />
 								) : (
 									<img src={NO_IMAGE} alt='' />
 								)}
-							</NavLink>
+							</Link>
 							<div className='movies-details'>
 								<div className='movies-title'>
 									{movie.title}
