@@ -4,7 +4,7 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
 	const [movies, setMovies] = useState([]);
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [page, setPage] = useState(1);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [singleMovie, setSingleMovie] = useState([]);

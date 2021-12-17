@@ -7,9 +7,11 @@ import '../scss/Content.scss';
 import StarIcon from '@material-ui/icons/Star';
 import SearchIcon from '@material-ui/icons/Search';
 import NO_IMAGE from '../images/no_image.jpg';
+import Spinner from './Spinner'
+import '../scss/Spinner.scss'
 
 function Movies() {
-	const { movies, setMovies, page, setPage, searchTerm, setSearchTerm } =
+	const { movies, setMovies, page, setPage, searchTerm, setSearchTerm, loading, setLoading } =
 		useContext(DataContext);
 
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
@@ -37,6 +39,7 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 					const listMovies = response.data;
 					setPage(listMovies.page);
 					setMovies(listMovies.results);
+					setLoading(false)
 				} catch (err) {
 					<h1>Something Went Wrong</h1>;
 				}
@@ -57,6 +60,7 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 
 
 	return (
+		loading ? <Spinner /> :
 		<div className='movies'>
 			<div className='movies-header'>
 				<div className='wrapper'>

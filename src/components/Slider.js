@@ -1,5 +1,5 @@
 import { Carousel } from 'react-responsive-carousel';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -8,8 +8,10 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import StarIcon from '@material-ui/icons/Star';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import DataContext from "../contexts/DataContext";
 
 function Slider() {
+	const { setLoading } = useContext(DataContext)
 	const [movies, setMovies] = useState([]);
 	const rand = Math.floor(Math.random() * 5) + 1;
 
@@ -24,6 +26,7 @@ function Slider() {
 				const response = await axios(API_URL);
 				const listMovies = response.data;
 				setMovies(listMovies.results);
+				setLoading(false)
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
 			}
@@ -45,9 +48,8 @@ function Slider() {
 			swipeable={false}
 		>
 			{movies.map((movie) => (
-				<Link to={`/movie/${movie.id}`}>
+				<Link key={movie.id} to={`/movie/${movie.id}`}>
 					<div
-						key={movie.id}
 						style={{
 							backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(${IMG_URL + movie.backdrop_path
 								})`,

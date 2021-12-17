@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import '../scss/SingleMovie.scss';
 import '../scss/Slider.scss';
 import NO_IMAGE from '../images/no_image.jpg';
 import  KeyboardBackspaceIcon  from "@material-ui/icons/KeyboardBackspace";
+import DataContext from "../contexts/DataContext";
+import Spinner from './Spinner'
+import '../scss/Spinner.scss'
 
 function Casts() {
+  const { loading, setLoading } = useContext(DataContext)
   const [casts, setCasts] = useState([])
   const { id } = useParams();
 
@@ -20,6 +24,7 @@ function Casts() {
         const cast = await axios(CAST_URL);
         const castList = cast.data;
         setCasts(castList.cast);
+        setLoading(false)
       } catch (err) {
         <h1>Something Went Wrong</h1>;
       }
@@ -29,6 +34,7 @@ function Casts() {
   }, []);
 
   return (
+    loading? <Spinner/> :
     <>
       <header className='carousel-header'>
         <div className='wrapper flex ai-c jc-sb'>
