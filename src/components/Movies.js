@@ -47,7 +47,7 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 			fetchMovies();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [page, searchTerm,Link]);
+	}, [page, searchTerm, MOVIES_URL]);
 
 	const handleNext = (prevState) => {
 		setPage((prevState) => prevState + 1)
