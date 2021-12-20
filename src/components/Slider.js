@@ -1,5 +1,5 @@
 import { Carousel } from 'react-responsive-carousel';
-import { useEffect, useState,useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -27,6 +27,8 @@ function Slider() {
 				const listMovies = response.data;
 				setMovies(listMovies.results);
 				setLoading(false)
+				console.log(listMovies.results)
+				console.log(rand)
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
 			}
@@ -51,7 +53,7 @@ function Slider() {
 				<Link key={movie.id} to={`/movie/${movie.id}`}>
 					<div
 						style={{
-							backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(${IMG_URL + movie.backdrop_path
+							backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(${IMG_URL + movie.backdrop_path
 								})`,
 						}}
 						className='carousel'
@@ -59,11 +61,11 @@ function Slider() {
 						<img className="carousel-bg" style={{ display: 'none' }} src={`${IMG_URL + movie.backdrop_path
 							}`} alt="" />
 						<header className='carousel-header'>
-							<div className='wrapper flex ai-c jc-sb'>
+							<div className='flex wrapper ai-c jc-sb'>
 								<Link to="/">
 									<div className='carousel-logo'>POPVIEW</div>
 								</Link>
-								<div className='carousel-header-nav flex ai-c jc-c'>
+								<div className='flex carousel-header-nav ai-c jc-c'>
 									<span>
 										<PlaylistPlayIcon style={{ fontSize: '3.2rem' }} />
 									</span>
@@ -73,10 +75,10 @@ function Slider() {
 								</div>
 							</div>
 						</header>
-						<div className='wrapper flex ai-c jc-sb'>
+						<div className='flex wrapper ai-c jc-sb'>
 							<div className='carousel-content'>
 								<div className='carousel-title'> {movie.title} </div>
-								<div className='carousel-timeGenre flex ai-c'>
+								<div className='flex carousel-timeGenre ai-c'>
 									<span className='flex ai-c jc-c'>
 										<StarIcon style={{ color: '#d7ab25' }} />
 										{movie.vote_average}
