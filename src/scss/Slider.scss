@@ -49,11 +49,11 @@
   }
 
   &-header {
-    z-index: 10;
+    z-index: 1000 !important;
     align-self: stretch;
     justify-self: flex-start;
     height: 8rem;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .5);
     width: 100%;
 
     & .wrapper {

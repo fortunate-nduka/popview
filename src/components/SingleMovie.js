@@ -67,11 +67,11 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 					}}
 				>
 					<header className='carousel-header'>
-						<div className='wrapper flex ai-c jc-sb'>
+						<div className='flex wrapper ai-c jc-sb'>
 							<Link to="/">
 								<div className='carousel-logo'>POPVIEW</div>
 							</Link>
-							<div className='carousel-header-nav flex ai-c jc-c'>
+							<div className='flex carousel-header-nav ai-c jc-c'>
 								<span>
 									<PlaylistPlayIcon style={{ fontSize: '3.2rem' }} />
 								</span>
@@ -81,16 +81,16 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 							</div>
 						</div>
 					</header>
-					<div className='wrapper singleMovie-wrapper flex ai-c jc-sb'>
+					<div className='flex wrapper singleMovie-wrapper ai-c jc-sb'>
 						<div className='carousel-content'>
 							<div className='carousel-title'> {singleMovie.title} </div>
 							<div className='carousel-tagline'> {singleMovie.tagline} </div>
 							{singleMovie.genres &&
-								<div className="carousel-genres flex ai-c wrap">
+								<div className="flex carousel-genres ai-c wrap">
 									{singleMovie.genres.map(genre => <div className="carousel-genre">{genre.name}</div>)}
 								</div>
 							}
-							<div className='carousel-timeGenre flex ai-c'>
+							<div className='flex carousel-timeGenre ai-c'>
 								<span className='flex ai-c jc-c'>
 									<StarIcon style={{ color: '#d7ab25' }} />
 									{singleMovie.vote_average}
@@ -103,7 +103,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 									{singleMovie.vote_count}
 								</span>
 							</div>
-							<div className='carousel-overview'> {singleMovie.overview} </div>
+							<div className='carousel-overview'> {singleMovie.overview ? singleMovie.overview : <div className="carousel-noOverview">Sorry, Storyline not Available in Movie Database</div>} </div>
 						</div>
 						<figure className='carousel-figure singleMovie-figure'>
 							<img
@@ -116,7 +116,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				</div>
 				<div className='wrapper'>
 					<div className="section-title">casts</div>
-					<div className='singleMovie__cast flex ai-s jc-c wrap'>
+					<div className='flex singleMovie__cast ai-s jc-c wrap'>
 						{casts.map((cast) => (
 							<>
 								{cast.profile_path && (
@@ -146,7 +146,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 						<button className="red see-all">See all cast</button>
 					</Link>}
 					<div className="section-title">crews</div>
-					<div className='singleMovie__cast flex ai-s jc-c wrap'>
+					<div className='flex singleMovie__cast ai-s jc-c wrap'>
 						{crews.map((crew) => (
 							<div div key={crew.id}>
 								{crew.profile_path && (
@@ -176,7 +176,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 						<button className="red see-all">See all crew</button>
 					</Link>}
 					<div className="section-title">similar movies</div>
-					<div className='singleMovie__similar flex ai-c jc-c wrap'>
+					<div className='flex singleMovie__similar ai-c jc-c wrap'>
 						{similars.map((similar) => (
 							<Link to={`/movie/${similar.id}`}>
 								<div onClick={handleSimilar} key={similar.id} className='singleMovie__similar-card'>
@@ -187,12 +187,12 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 									)}
 									<div className='movies-details'>
 										<div className='movies-title'>{similar.title}</div>
-										<div className='movies-info flex ai-c jc-sb'>
+										<div className='flex movies-info ai-c jc-sb'>
 											<span>
 												{similar.release_date &&
 													similar.release_date.slice(0, 4)}
 											</span>
-											<div className='movies-info-icons flex ai-c jc-c'>
+											<div className='flex movies-info-icons ai-c jc-c'>
 												<span>
 													<StarIcon style={{ color: '#d7ab25' }} />
 													{similar.vote_average &&

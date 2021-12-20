@@ -56,7 +56,17 @@ a {
   color: var(--white);
 }
 
-a{
+.carousel-slider>button {
+  border-radius: 0 !important;
+}
+
+.control-arrow {
+  background-color: #000000 !important;
+  opacity: .5 !important;
+  color: #fff !important;
+}
+
+a {
   text-decoration: none !important;
   color: inherit !important;
 }

@@ -91,7 +91,7 @@ function Slider() {
 										{movie.vote_count}
 									</span>
 								</div>
-								<div className='carousel-overview'> {movie.overview ? movie.overview : <div className="carousel-noOverview">Sorry:), Storyline not Available</div>} </div>
+								<div className='carousel-overview'> {movie.overview ? movie.overview : <div className="carousel-noOverview">Sorry, Storyline not Available in Movie Database</div>} </div>
 								<div className="carousel-starring"></div>
 							</div>
 							<figure className='carousel-figure'>
