@@ -16,19 +16,18 @@ function Slider() {
 	const rand = Math.floor(Math.random() * 5) + 1;
 
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
-	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1`;
+	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 	// const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
 
 	useEffect(() => {
 		const fetchMovies = async () => {
 			try {
+				setLoading(true)
 				const response = await axios(API_URL);
 				const listMovies = response.data;
 				setMovies(listMovies.results);
 				setLoading(false)
-				console.log(listMovies.results)
-				console.log(rand)
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
 			}
@@ -53,7 +52,7 @@ function Slider() {
 				<Link key={movie.id} to={`/movie/${movie.id}`}>
 					<div
 						style={{
-							backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url(${IMG_URL + movie.backdrop_path
+							backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url(${IMG_URL + movie.backdrop_path
 								})`,
 						}}
 						className='carousel'

@@ -30,6 +30,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 	useEffect(() => {
 		const fetchCast = async () => {
 			try {
+				setLoading(true)
 				const people = await axios(PEOPLE_URL);
 				const similar = await axios(SIMILAR_URL);
 				const movie = await axios(MOVIE_URL);
@@ -37,7 +38,6 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 				const peopleList = people.data;
 				const similarList = similar.data;
 				const movieList = movie.data;
-				console.log(movieList);
 				setSingleMovie(movieList);
 				setCasts(peopleList.cast.slice(0, 4));
 				setCrews(peopleList.crew.slice(0, 4));

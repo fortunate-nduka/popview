@@ -137,6 +137,7 @@
   &-genres {
     gap: 2rem;
     margin-bottom: 3rem;
+
     @media screen and (max-width: 600px) {
       gap: 1rem;
     }
@@ -148,6 +149,7 @@
     font-size: 1.3rem;
     padding: 1rem 1.5rem;
     border-radius: 20px;
+
     @media screen and (max-width: 600px) {
       font-size: 1.2rem;
       padding: .8rem 1.3rem;
@@ -171,10 +173,12 @@
       margin-bottom: .2rem;
     }
   }
-&-noOverview{
-  color: var(--gold);
-  font-style: italic;
-}
+
+  &-noOverview {
+    color: var(--gold);
+    font-style: italic;
+  }
+
   &-overview {
     font-weight: 400;
     margin-bottom: 2.5rem;
@@ -203,12 +207,22 @@
   }
 }
 
+.carousel-slider .control-arrow {
+  border-radius: 0;
+  animation: blink2 .5s infinite ease-in-out;
+}
+
+.control-arrow {
+  top: 8rem !important;
+  animation: changeBackgroundColor 7s infinite !important;
+}
+
 @keyframes blink {
 
   20%,
   50%,
   55% {
-    color: #111;
+    color: var(--gold);
     text-shadow: none;
   }
 
@@ -218,5 +232,20 @@
   100% {
     text-shadow: var(--red);
     color: var(--red);
+  }
+}
+
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: rgba(209, 29, 29,.4);
+  }
+
+  50% {
+    background-color: var(--black);
+    opacity: .1;
+  }
+
+  100% {
+    background-color: rgba(209, 29, 29, .4);
   }
 }

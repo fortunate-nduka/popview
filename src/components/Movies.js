@@ -9,6 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import NO_IMAGE from '../images/no_image.jpg';
 import Spinner from './Spinner'
 import '../scss/Spinner.scss'
+import PageControl from './PageControl';
 
 function Movies() {
 	const { movies, setMovies, page, setPage, searchTerm, setSearchTerm, loading, setLoading } =
@@ -35,6 +36,7 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 		} else {
 			const fetchMovies = async () => {
 				try {
+					setLoading(true)
 					const response = await axios(MOVIES_URL);
 					const listMovies = response.data;
 					setPage(listMovies.page);
@@ -49,84 +51,61 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [page, searchTerm, MOVIES_URL]);
 
-	const handleNext = (prevState) => {
-		setPage((prevState) => prevState + 1)
+	const handleSimilar = () => {
 		window.scrollTo(0, 0);
 	}
-	const handlePrev = (prevState) => {
-		setPage((prevState) => prevState - 1)
-		window.scrollTo(0, 0);
-	}
+
 
 
 	return (
 		loading ? <Spinner /> :
-		<div className='movies'>
-			<div className='movies-header'>
-				<div className='wrapper'>
-					<form className='movies-form flex ai-c jc-c'>
-						<SearchIcon className='movies-form-icon' />
-						<input
-							type='text'
-							placeholder='Search'
-							value={searchTerm}
-							onChange={(e) => setSearchTerm(e.target.value)}
-						/>
-					</form>
+			<div className='movies'>
+				<div className='movies-header'>
+					<div className='wrapper'>
+						<form className='flex movies-form ai-c jc-c'>
+							<SearchIcon className='movies-form-icon' />
+							<input
+								type='text'
+								placeholder='Search'
+								value={searchTerm}
+								onChange={(e) => setSearchTerm(e.target.value)}
+							/>
+						</form>
+					</div>
 				</div>
-			</div>
-			<div className='wrapper'>
-				<div className='movies-container flex wrap'>
-					{movies.map((movie) => (
-						<div key={movie.id} className='movies-card'>
-							<Link to={`/movie/${movie.id}`}>
-								{movie.poster_path ? (
-									<img src={IMG_URL + movie.poster_path} alt='' />
-								) : (
-									<img src={NO_IMAGE} alt='' />
-								)}
-							</Link>
-							<div className='movies-details'>
-								<div className='movies-title'>
-									{movie.title}
-								</div>
-								<div className='movies-info flex ai-c jc-sb'>
-									<span>
-										{movie.release_date && movie.release_date.slice(0, 4)}
-									</span>
-									<div className='movies-info-icons flex ai-c jc-c'>
+				<div className='wrapper'>
+					<div className='flex movies-container wrap' id='movies-container'>
+						{movies.map((movie) => (
+							<div onClick={handleSimilar} key={movie.id} className='movies-card'>
+								<Link to={`/movie/${movie.id}`}>
+									{movie.poster_path ? (
+										<img src={IMG_URL + movie.poster_path} alt='' />
+									) : (
+										<img src={NO_IMAGE} alt='' />
+									)}
+								</Link>
+								<div className='movies-details'>
+									<div className='movies-title'>
+										{movie.title}
+									</div>
+									<div className='flex movies-info ai-c jc-sb'>
 										<span>
-											<StarIcon style={{ color: '#d7ab25' }} />
-											{movie.vote_average}
+											{movie.release_date && movie.release_date.slice(0, 4)}
 										</span>
+										<div className='flex movies-info-icons ai-c jc-c'>
+											<span>
+												<StarIcon style={{ color: '#d7ab25' }} />
+												{movie.vote_average}
+											</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					))}
-				</div>
-				{!searchTerm && (
-					<div className='movies-button flex ai-c jc-c'>
-						{page <= 1 ? (
-							<button className='red'>Prev</button>
-						) : (
-							<button
-								onClick={handlePrev}
-								className='red'
-							>
-								Prev
-							</button>
-						)}
-						<button
-							onClick={handleNext}
-							className='black'
-						>
-							Next
-						</button>
+						))}
 					</div>
-				)}
+					<PageControl/>
+				</div>
 			</div>
-		</div>
 	);
 }
 
