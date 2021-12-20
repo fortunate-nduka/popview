@@ -16,7 +16,7 @@ function Slider() {
 	const rand = Math.floor(Math.random() * 5) + 1;
 
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
-	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
+	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=1`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 	// const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
 
@@ -91,7 +91,7 @@ function Slider() {
 										{movie.vote_count}
 									</span>
 								</div>
-								<div className='carousel-overview'> {movie.overview} </div>
+								<div className='carousel-overview'> {movie.overview ? movie.overview : <div className="carousel-noOverview">Sorry:), Storyline not Available</div>} </div>
 								<div className="carousel-starring"></div>
 							</div>
 							<figure className='carousel-figure'>
