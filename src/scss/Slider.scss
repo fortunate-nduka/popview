@@ -237,15 +237,15 @@
 
 @keyframes changeBackgroundColor {
   0% {
-    background-color: rgba(209, 29, 29,.4);
+    background-color: rgba(0, 0, 0, .4);
   }
 
   50% {
     background-color: var(--black);
-    opacity: .1;
+    opacity: .8;
   }
 
   100% {
-    background-color: rgba(209, 29, 29, .4);
+    background-color: rgba(0, 0, 0, .4);
   }
 }

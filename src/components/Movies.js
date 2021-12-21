@@ -49,13 +49,11 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 			fetchMovies();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [page, searchTerm, MOVIES_URL]);
+	}, [page,searchTerm, MOVIES_URL]);
 
 	const handleSimilar = () => {
 		window.scrollTo(0, 0);
 	}
-
-
 
 	return (
 		loading ? <Spinner /> :

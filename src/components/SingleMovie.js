@@ -12,36 +12,31 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import DataContext from '../contexts/DataContext';
 import Spinner from './Spinner'
 import '../scss/Spinner.scss'
+import SimilarMovies from './SimilarMovies';
 
 function SingleMovie() {
 	const { singleMovie, setSingleMovie, loading, setLoading } = useContext(DataContext)
 	const [casts, setCasts] = useState([]);
 	const [crews, setCrews] = useState([]);
-	const [similars, setSimilars] = useState([]);
+	
 	const { id } = useParams();
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const PEOPLE_URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
-	const SIMILAR_URL = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 	const MOVIE_URL = `
 https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
-	// const TRAILER_URL = `https://api.themoviedb.org/3/movie/157336?api_key=2e1b1833046bb0966cc107c440e51fe6&append_to_response=videos`
 
 	useEffect(() => {
 		const fetchCast = async () => {
 			try {
 				setLoading(true)
 				const people = await axios(PEOPLE_URL);
-				const similar = await axios(SIMILAR_URL);
 				const movie = await axios(MOVIE_URL);
-				// const trailer = await axios(TRAILER_URL);
 				const peopleList = people.data;
-				const similarList = similar.data;
 				const movieList = movie.data;
 				setSingleMovie(movieList);
 				setCasts(peopleList.cast.slice(0, 4));
 				setCrews(peopleList.crew.slice(0, 4));
-				setSimilars(similarList.results.slice(0, 4));
 				setLoading(false)
 			} catch (err) {
 				<h1>Something Went Wrong</h1>;
@@ -49,11 +44,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 		};
 		fetchCast();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [SIMILAR_URL]);
-
-	const handleSimilar = () => {
-		window.scrollTo(0, 0);
-	}
+	}, []);
 
 	return (
 		loading ? <Spinner /> :
@@ -175,36 +166,9 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 					{crews && <Link to={`/crew/${id}`}>
 						<button className="red see-all">See all crew</button>
 					</Link>}
-					<div className="section-title">similar movies</div>
-					<div className='flex singleMovie__similar ai-c jc-c wrap'>
-						{similars.map((similar) => (
-							<Link to={`/movie/${similar.id}`}>
-								<div onClick={handleSimilar} key={similar.id} className='singleMovie__similar-card'>
-									{similar.poster_path ? (
-										<img src={IMG_URL + similar.poster_path} alt='' />
-									) : (
-										<img src={NO_IMAGE} alt='' />
-									)}
-									<div className='movies-details'>
-										<div className='movies-title'>{similar.title}</div>
-										<div className='flex movies-info ai-c jc-sb'>
-											<span>
-												{similar.release_date &&
-													similar.release_date.slice(0, 4)}
-											</span>
-											<div className='flex movies-info-icons ai-c jc-c'>
-												<span>
-													<StarIcon style={{ color: '#d7ab25' }} />
-													{similar.vote_average &&
-														(similar.vote_average)}
-												</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</Link>
-						))}
-					</div>
+
+					<SimilarMovies/>
+
 				</div>
 			</div>
 	);

@@ -1,10 +1,10 @@
 /*! GLOBAL STYLES */
 :root {
   --maxWidth: 1400px;
-  --black: #000000;
+  --black: rgb(0, 0, 0);
   --white: #ffffff;
   --grey: #999797;
-  --red: #d11d1d;
+  --red: rgb(209, 29, 29);
   --gold: #d7ab25;
   --fontHeading: 'Aladin',
     cursive;
@@ -51,14 +51,10 @@ body {
 }
 
 a {
-  text-decoration: none;
-  font-style: none;
-  color: var(--white);
-}
-
-a {
   text-decoration: none !important;
   color: inherit !important;
+  font-style: none !important;
+  color: var(--white);
 }
 
 a:hover,
@@ -132,7 +128,6 @@ button {
 
 button.red {
   background-color: var(--red);
-  border: 1px solid var(--red);
 }
 
 button.black {
@@ -140,8 +135,17 @@ button.black {
   border: 1px solid var(--grey);
 }
 
-button svg {
-  font-size: 5rem;
+button.red svg,
+button.black svg {
+  font-size: 1.5rem;
+}
+
+.arrBck {
+  margin-right: .4rem;
+}
+
+.arrFor {
+  margin-left: .4rem;
 }
 
 .netflix-img {
