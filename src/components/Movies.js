@@ -15,7 +15,7 @@ function Movies() {
 	const { movies, setMovies, page, setPage, searchTerm, setSearchTerm, loading, setLoading } =
 		useContext(DataContext);
 
-	const IMG_URL = 'https://image.tmdb.org/t/p/original';
+	const IMG_URL = 'https://image.tmdb.org/t/p/w342';
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const MOVIES_URL = `
 https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}&sort_by=popularity.desc`;

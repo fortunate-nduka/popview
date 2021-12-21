@@ -8,6 +8,7 @@ export const DataProvider = ({ children }) => {
 	const [page, setPage] = useState(1);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [singleMovie, setSingleMovie] = useState([]);
+	const [similars, setSimilars] = useState([]);
 
 	return (
 		<DataContext.Provider
@@ -20,7 +21,7 @@ export const DataProvider = ({ children }) => {
 				setPage,
 				searchTerm,
 				setSearchTerm,
-				singleMovie, setSingleMovie
+				singleMovie, setSingleMovie, similars, setSimilars
 			}}
 		>
 			{children}

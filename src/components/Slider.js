@@ -17,6 +17,7 @@ function Slider() {
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
+	const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 	// const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
 
 	useEffect(() => {
@@ -87,15 +88,15 @@ function Slider() {
 									{movie.vote_count}
 								</span>
 							</div>
-							<div className='carousel-overview'> {movie.overview > 500 ? `${(movie.overview).slice(0, 500)}...` : movie.overview} </div>
+							<div className='carousel-overview'> {(movie.overview).length > 250 ? `${(movie.overview).slice(0, 250)} .....` : movie.overview}</div>
 							{!movie.overview && <div className="carousel-noOverview">Sorry, Storyline not Available in Movie Database</div>}
-							<Link to={`/movie/${movie.id}`}><button className="carousel-button red">More Details <ArrowForwardIcon className="arrFor" /></button>
+							<Link to={`/movie/${movie.id}`}><button className="carousel-btn red">More Details <ArrowForwardIcon/></button>
 							</Link>
 						</div>
 						<figure className='carousel-figure'>
 							<img
 								className='carousel-poster'
-								src={IMG_URL + movie.poster_path}
+								src={POSTER_URL + movie.poster_path}
 								alt=''
 							/>
 						</figure>

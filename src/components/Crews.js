@@ -15,7 +15,7 @@ function Crews() {
 
   const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
   const CAST_URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
-  const IMG_URL = 'https://image.tmdb.org/t/p/original';
+  const IMG_URL = 'https://image.tmdb.org/t/p/w185';
 
   useEffect(() => {
     const fetchCast = async () => {
@@ -36,7 +36,7 @@ function Crews() {
     loading ? <Spinner /> :
       <>
         <header className='carousel-header'>
-          <div className='wrapper flex ai-c jc-sb'>
+          <div className='flex wrapper ai-c jc-sb'>
             <Link to={`/movie/${id}`}>
               <div className="flex ai-c jc-c"><KeyboardBackspaceIcon style={{ marginRight: '.9rem', fontSize: '2rem' }} /> Go Back</div>
             </Link>
@@ -44,7 +44,7 @@ function Crews() {
         </header>
         <div className="wrapper" style={{ padding: '4rem 0' }}>
           <div className="section-title" style={{ marginTop: 0 }}>crews</div>
-          <div className='singleMovie__cast flex ai-s jc-c wrap'>
+          <div className='flex singleMovie__cast ai-s jc-c wrap'>
             {crews.map((crew) => (
               <>
                 {crew.profile_path && (

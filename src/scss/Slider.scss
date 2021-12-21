@@ -185,18 +185,20 @@
     line-height: 1.8;
   }
 
-  &-button {
-    & button svg {
-      font-size: 2rem;
-      margin-right: .5rem;
+  &-btn {
+    font-size: 1.2rem;
+
+    & svg {
+      font-size: 1.2rem;
+      margin-left: .5rem;
     }
   }
 }
 
 .carousel-logo {
   font-family: var(--fontbody);
-  font-weight: 900;
-  font-size: 2.5rem;
+  font-weight: 700;
+  font-size: 2.3rem;
   text-shadow: var(--red);
   color: var(--red);
   text-align: center;
@@ -209,12 +211,12 @@
 
 .carousel-slider .control-arrow {
   border-radius: 0;
-  animation: blink2 .5s infinite ease-in-out;
+  opacity: 1 !important;
 }
 
 .control-arrow {
+  opacity: 1 !important;
   top: 8rem !important;
-  animation: changeBackgroundColor 7s infinite !important;
 }
 
 @keyframes blink {
@@ -232,20 +234,5 @@
   100% {
     text-shadow: var(--red);
     color: var(--red);
-  }
-}
-
-@keyframes changeBackgroundColor {
-  0% {
-    background-color: rgba(0, 0, 0, .4);
-  }
-
-  50% {
-    background-color: var(--black);
-    opacity: .8;
-  }
-
-  100% {
-    background-color: rgba(0, 0, 0, .4);
   }
 }

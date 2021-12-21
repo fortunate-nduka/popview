@@ -22,6 +22,8 @@ function SingleMovie() {
 	const { id } = useParams();
 	const API_KEY = '2e1b1833046bb0966cc107c440e51fe6';
 	const PEOPLE_URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
+	const PROFILE_URL = 'https://image.tmdb.org/t/p/w185';
+	const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 	const MOVIE_URL = `
 https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
@@ -44,7 +46,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 		};
 		fetchCast();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [id]);
 
 	return (
 		loading ? <Spinner /> :
@@ -99,7 +101,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 						<figure className='carousel-figure singleMovie-figure'>
 							<img
 								className='carousel-poster'
-								src={IMG_URL + singleMovie.poster_path}
+								src={POSTER_URL + singleMovie.poster_path}
 								alt=''
 							/>
 						</figure>
@@ -113,7 +115,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 								{cast.profile_path && (
 									<div key={cast.id} className='singleMovie__cast-card'>
 										{cast.profile_path ? (
-											<img src={IMG_URL + cast.profile_path} alt='' />
+											<img src={PROFILE_URL + cast.profile_path} alt='' />
 										) : (
 											<img src={NO_IMAGE} alt='' />
 										)}
@@ -143,7 +145,7 @@ https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
 								{crew.profile_path && (
 									<div className='singleMovie__cast-card'>
 										{crew.profile_path ? (
-											<img src={IMG_URL + crew.profile_path} alt='' />
+											<img src={PROFILE_URL + crew.profile_path} alt='' />
 										) : (
 											<img src={NO_IMAGE} alt='' />
 										)}
