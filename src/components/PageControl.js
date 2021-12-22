@@ -17,7 +17,7 @@ function PageControl() {
 
   return (
     !searchTerm && (
-      <div className='flex movies-button ai-c jc-c'>
+      <div style={{fontSize: '1.2rem'}} className='flex movies-button ai-c jc-c'>
         {page <= 1 ? (
           <button style={{ opacity: '.4',paddingLeft: '2rem', paddingRight: "2rem", marginRight: 0 }} className='red'><ArrowBackIcon className="arrBck" /> Prev</button>
         ) : (
