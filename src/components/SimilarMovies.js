@@ -18,6 +18,7 @@ function SimilarMovies() {
         const similar = await axios(SIMILAR_URL);
         const similarList = similar.data;
         setSimilars(similarList.results.slice(0, 4));
+        console.log(similarList.results)
       } catch (err) {
         <h1>Something Went Wrong</h1>;
       }
@@ -26,17 +27,13 @@ function SimilarMovies() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSimilar = () => {
-    // window.scrollTo(0, 0);
-  }
-
   return (
     <>
       <div className="section-title">similar movies</div>
       <div className='flex singleMovie__similar ai-c jc-c wrap'>
         {similars.map((similar) => (
           <Link to={`/movie/${similar.id}`}>
-            <div onClick={handleSimilar} key={similar.id} className='singleMovie__similar-card'>
+            <div key={similar.id} className='singleMovie__similar-card'>
               {similar.poster_path && (
                 <img src={POSTER_URL + similar.poster_path} alt='' />
               )}
@@ -50,8 +47,7 @@ function SimilarMovies() {
                   <div className='flex movies-info-icons ai-c jc-c'>
                     <span>
                       <StarIcon style={{ color: '#d7ab25' }} />
-                      {similar.vote_average &&
-                        (similar.vote_average)}
+                      {similar.vote_average.toFixed(1)}
                     </span>
                   </div>
                 </div>

@@ -21,6 +21,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 
   @media screen and (max-width: 1000px) {
     font-size: 60.5%;
@@ -148,8 +149,19 @@ button.black svg {
   margin-left: .4rem;
 }
 
-.netflix-img {
-  width: 5%;
+.scrollToTop{
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: rgba(209, 29, 29,.7);
+  display: grid;
+  place-content: center;
+  & svg{
+    font-size: 2rem;
+  }
 }
 
 

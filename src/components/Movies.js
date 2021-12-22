@@ -10,6 +10,7 @@ import NO_IMAGE from '../images/no_image.jpg';
 import Spinner from './Spinner'
 import '../scss/Spinner.scss'
 import PageControl from './PageControl';
+import ScrollToTop from './ScrollToTop';
 
 function Movies() {
 	const { movies, setMovies, page, setPage, searchTerm, setSearchTerm, loading, setLoading } =
@@ -49,7 +50,7 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 			fetchMovies();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [page,searchTerm, MOVIES_URL]);
+	}, [page, searchTerm, MOVIES_URL]);
 
 	const handleSimilar = () => {
 		window.scrollTo(0, 0);
@@ -101,8 +102,9 @@ https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&pa
 							</div>
 						))}
 					</div>
-					<PageControl/>
+					<PageControl />
 				</div>
+				<ScrollToTop />
 			</div>
 	);
 }

@@ -18,7 +18,6 @@ function Slider() {
 	const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&page=${rand}`;
 	const IMG_URL = 'https://image.tmdb.org/t/p/original';
 	const POSTER_URL = 'https://image.tmdb.org/t/p/w500';
-	// const CAST_URL = `https://api.themoviedb.org/3/movie/${movies.id}/credits?api_key=${API_KEY}&language=en-US`;
 
 	useEffect(() => {
 		const fetchMovies = async () => {

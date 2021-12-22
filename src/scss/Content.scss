@@ -1,9 +1,10 @@
 .movies {
   width: 100%;
   padding: 6rem 2rem;
-   @media screen and (max-width: 500px) {
-     padding: 7rem 1rem;
-   }
+
+  @media screen and (max-width: 500px) {
+    padding: 7rem 1rem;
+  }
 
   &-container {
     width: 100%;
@@ -42,9 +43,10 @@
       @media screen and (max-width: 800px) {
         width: 85%;
       }
-       @media screen and (max-width: 500px) {
-         width: 95%;
-       }
+
+      @media screen and (max-width: 500px) {
+        width: 95%;
+      }
 
       &:focus {
         width: 80%;
@@ -52,9 +54,10 @@
         @media screen and (max-width: 500px) {
           width: 90%;
         }
-         @media screen and (max-width: 500px) {
-           width: 97%;
-         }
+
+        @media screen and (max-width: 500px) {
+          width: 97%;
+        }
       }
 
       &::placeholder {
@@ -73,6 +76,7 @@
     @media screen and (max-width: 450px) {
       flex-basis: 30rem;
     }
+
     @media screen and (max-width: 310px) {
       flex-basis: 25rem;
     }
@@ -84,24 +88,37 @@
   }
 
   &-details {
-    padding: 0 1px;
+    padding: 0 .5rem;
   }
 
   &-title {
-    font-size: 1.2rem;
+    width: 19rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 1.3rem;
     font-weight: 500;
     margin: .4rem 0 .7rem;
-    @media screen and (max-width: 500px){
+
+    @media screen and (max-width: 500px) {
       font-size: 1.5rem;
       font-weight: 600;
+    }
+
+    @media screen and (max-width: 450px) {
+      width: 29rem;
+    }
+
+    @media screen and (max-width: 310px) {
+      width: 24rem;
     }
   }
 
   &-info {
     color: var(--grey);
-    font-size: 1.4rem;
-    font-weight: 700;
-    padding: 0 3px;
+    font-size: 1.2rem;
+    font-weight: 500;
 
     &-icons span {
       margin: 0 .3rem;
