@@ -149,18 +149,30 @@ button.black svg {
   margin-left: .4rem;
 }
 
-.scrollToTop{
+.scrollToTop {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  background-color: rgba(209, 29, 29,.7);
+  background-color: rgba(209, 29, 29, .7);
   display: grid;
   place-content: center;
-  & svg{
+
+  @media screen and (max-width: 500px) {
+    bottom: .5rem;
+    right: .5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  & svg {
     font-size: 2rem;
+
+    @media screen and (max-width: 500px) {
+      font-size: 1.8rem;
+    }
   }
 }
 
