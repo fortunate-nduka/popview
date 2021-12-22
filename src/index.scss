@@ -161,18 +161,12 @@ button.black svg {
   place-content: center;
 
   @media screen and (max-width: 500px) {
-    bottom: .5rem;
-    right: .5rem;
-    width: 3rem;
-    height: 3rem;
+    bottom: 1rem;
+    right: 1rem;
   }
 
   & svg {
     font-size: 2rem;
-
-    @media screen and (max-width: 500px) {
-      font-size: 1.8rem;
-    }
   }
 }
 
